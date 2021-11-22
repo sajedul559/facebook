@@ -14,20 +14,15 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->string('status')->nullable();
-            $table->string('photo')->nullable();
-            $table->json('likes')->nullable();
-            $table->json('shares')->nullable();
-            $table->integer('comments')->default('0');
-            $table->integer('user_id');
-            $table->dateTime('created_at')->useCurrent();
-            $table->dateTime('updated_at')->useCurrent();
-
-
-
-
-            
+            $table-> id();
+            $table-> string('status', 250)->nullable();
+            $table-> string('photo', 250)->nullable();
+            $table-> json('likes')->nullable();
+            $table-> json('shares')->nullable();
+            $table-> integer('comments')->default('0');
+            $table-> integer('user_id');
+            $table-> dateTime('created_at')->useCurrent();
+            $table-> dateTime('updated_at')->useCurrent();
         });
     }
 
