@@ -3,14 +3,14 @@
 @section('center')
     <div class="col-sm-6">
         <div class="text-center">
-            <img class="img-circle" src="images/user_8/image_1619243210.jpeg" height="200" width="300">
+            <img class="img-circle" src="{{asset(auth()->user()->image??'/images/no_user.png')}}" height="200" width="300">
             <br><br>
         </div>
 
         <table style="width:100%" class="table table-striped">
             <tr>
                 <td><strong>First Name</strong></td>
-                <td id="f_name">Test Name</td>
+                <td id="f_name">{{auth()->user()->fname}}</td>
                 <td>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" onclick="setField('f_name');">
                         Edit
@@ -19,7 +19,7 @@
             </tr>
             <tr>
                 <td><strong>Last Name</strong></td>
-                <td id="l_name">Test Name</td>
+                <td id="l_name">{{auth()->user()->lname}}</td>
                 <td>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" onclick="setField('l_name');">
                         Edit
@@ -27,32 +27,24 @@
                 </td>
             </tr>
             <tr>
-                <td><strong>Username</strong></td>
-                <td id="username">test_username</td>
+                <td><strong>BirtdDay</strong></td>
+                <td id="birthday"> {{ date('F j, Y',strtotime(auth()->user()->b_day))}}</td>
                 <td>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" onclick="setField('username');">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" onclick="setField('birthday');">
                         Edit
                     </button>
                 </td>
             </tr>
             <tr>
                 <td><strong>Email</strong></td>
-                <td id="email">raju@raju.com</td>
+                <td id="email">{{auth()->user()->email}}</td>
                 <td>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" onclick="setField('email');">
                         Edit
                     </button>
                 </td>
             </tr>
-            <tr>
-                <td><strong>Phone</strong></td>
-                <td id="phone">0123456789</td>
-                <td>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" onclick="setField('phone');">
-                        Edit
-                    </button>
-                </td>
-            </tr>
+            
         </table>
     </div>
 
