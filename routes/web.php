@@ -50,4 +50,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/dashboard','DashobardController@index')->name('dashboard');
     Route::resource('/posts', PostController::class);
+    Route::resource('/profile', ProfileController::class);
+
 });

@@ -175,9 +175,61 @@ input:focus,select:focus,textarea:focus,button:focus{
     box-shadow: 0px -6px 5px 0px rgba(0,0,0,0.5);
     background: rgba(251, 249, 249, 0.45);
 }
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: relative;
+    height: auto;
+    overflow: auto;
+}
+
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+}
+
+
+
+.sidebar a:hover:not(.active) {
+    background-color: #2d9a40;
+    color: white;
+}
+
+div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+}
+
+
+@media screen and (max-width: 700px) {
+
+}
+
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+}
+
 /* Responsive */
 @media (max-width:768px){
     body{padding-top:0px}
     .header{position:relative;}
     .header .logo{text-align:center}
+
+    .sidebar {
+        width: auto;
+        position: relative;
+        bottom: 10px;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
 }
+
