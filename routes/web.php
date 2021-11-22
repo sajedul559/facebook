@@ -23,7 +23,7 @@ Route::post('/login_1', function () {
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('saveLogin');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
@@ -47,4 +47,7 @@ Route::get('email/resend', 'Auth\VerificationController@resend')->name('verifica
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/dashboard','DashobardController@index')->name('dashboard');
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/dashboard','DashobardController@index')->name('dashboard');
+    Route::resource('/posts', PostController::class);
+});

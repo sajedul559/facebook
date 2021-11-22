@@ -1,25 +1,3 @@
-welcome.blade.php
-Who has access
-
-System properties
-Type
-HTML
-Size
-14 KB
-Storage used
-14 KB
-Location
-Materials
-Owner
-Bohubrihi Online Courses
-Modified
-11 Apr 2021 by Bohubrihi Online Courses
-Opened
-22:51 by me
-Created
-12 May 2021
-No description
-Viewers can download
 <!DOCTYPE html>
 <html>
     <head>
@@ -42,7 +20,7 @@ Viewers can download
             }
         </style>
 
-</script>
+
     </head>
     <body>
         <div class="header">
@@ -55,10 +33,10 @@ Viewers can download
                     </div>
                     <div class="col-sm-8 pull-right">
                         <div class="inline-form pull-right">
-                            <form method="POST" action="{{ route('login_1.view') }}">
+                            <form method="POST" action="{{route('saveLogin')}}">
                                 @csrf
-                                <input type="text" name="user_email" placeholder="Email Address"/>
-                                <input type="password" name="user_email" placeholder="Password"/>
+                                <input type="text" name="email" placeholder="Email Address"/>
+                                <input type="password" name="password" placeholder="Password"/>
                                 <input type="submit" value="Login" class="btn btn-success"/>
                             </form>
                         </div>
