@@ -22,7 +22,7 @@ Route::post('/login_1', function () {
 })->name('login_1.view');
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
+Route::post('login', 'Auth\LoginController@login')->name('saveLogin');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
@@ -47,3 +47,4 @@ Route::get('email/resend', 'Auth\VerificationController@resend')->name('verifica
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard','DashobardController@index')->name('dashboard');

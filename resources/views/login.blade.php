@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Facebook - The Social Network</title>
+        <title>FaceClone - The Social Network</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="assets/css/style.css"/>
@@ -31,11 +31,11 @@
                 <div class="row">
                     <div class="col-sm-9">
                         <div class="logo">
-                            <h1>Facebook</h1>
+                            <h1>FaceClone</h1>
                         </div>
                     </div>
                     <div class="col-sm-3 text-center" >
-                        <input type="submit" value="Signup" class="btn btn-info"/>
+                        <a type="submit" href="{{ route('home') }}" class="btn btn-success">Signup</a>
                     </div>
                 </div>
             </div>
@@ -47,18 +47,43 @@
                     </div>
                     <div class="pull-right col-sm-6 text-center">
                         <div class="login-form">
-                            <p class="h3">Log in to Facebook</p>
-                            <form action="javascript:void(0);" onclick="window.location.href='dashboard.html'; return false;" method="post" style="max-width:400px;margin:0px auto;">
+                            <p class="h3">Log in to FaceClone</p>
+                            <form action="{{route('saveLogin')}}" method="post" style="max-width:400px;margin:0px auto;">
+                                @csrf
                                 <div class="form-group">
-                                    <input type="text" name="user_email" placeholder="Email Address" class="input-lg col-sm-12"/>
+                                    <input type="text" name="email" placeholder="Email Address" class="input-lg col-sm-12 @error('email') is-invalid @enderror" value="{{ old('email') }}" required/>
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" placeholder="New Password" name="pwd" class="input-lg col-sm-12"/>
+                                    <input type="password" placeholder="New Password" name="password" class="input-lg col-sm-12 @error('password') is-invalid @enderror" required/>
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Login" class="btn btn-success input-lg col-sm-12"/>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                            <label class="form-check-label" for="remember">
+                                                {{ __('Remember Me') }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <br/><br/><br/><br/>
-                                    <a href="index.html">Signup for Facebook</a>
+                                    <a href="{{ route('home') }}">Signup for FaceClone</a>
                                 </div>
                             </form>
                         </div>
@@ -70,7 +95,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12">
-                        &copy; Facebook 2017.
+                        &copy; FaceClone 2021.
                     </div>
                 </div>
             </div>
