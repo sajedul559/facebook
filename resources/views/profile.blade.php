@@ -2,12 +2,23 @@
 
 @section('center')
     <div class="col-sm-6">
-        <div class="text-center">
-            <img class="img-circle" src="{{asset(auth()->user()->image??'/images/no_user.png')}}" height="200" width="300">
-            <br><br>
-        </div>
+        <form action="{{route('profile.edit')}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="text-center" onmouseover="showUploadButton();" onmouseout="hideUploadButton();">
+                <div class="form-group button-image">
+                    <img class="img-circle" src="{{asset(auth()->user()->image?? 'images/no_user.png')}}">
+                    <label onmouseover="showUploadButton();" class="btn btn-success image-upload" >
+                        <input name="image" type="file" style="display: none;"/> Upload
+                    </label>
+                    <br><br>
+                </div>
+                <div class="form-group">
+                    <button class="image-upload btn btn-success" style="display: none;" type="submit">Save</button>
+                </div>
+            </div>
+        </form>
 
-        <table style="width:100%" class="table table-striped">
+        <table style="width:100%; border: 1px solid #4CAF50;" class="table table-striped">
             <tr>
                 <td><strong>First Name</strong></td>
                 <td id="f_name">{{auth()->user()->fname}}</td>
@@ -27,8 +38,8 @@
                 </td>
             </tr>
             <tr>
-                <td><strong>BirtdDay</strong></td>
-                <td id="birthday"> {{ date('F j, Y',strtotime(auth()->user()->b_day))}}</td>
+                <td><strong>Birthday</strong></td>
+                <td id="birthday">{{date('F j, Y', strtotime(auth()->user()->b_day))}}</td>
                 <td>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" onclick="setField('birthday');">
                         Edit
@@ -44,7 +55,6 @@
                     </button>
                 </td>
             </tr>
-            
         </table>
     </div>
 
@@ -57,26 +67,48 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form>
+                <form action="{{route('profile.update', auth()->user()->id)}}" method="POST">
+                    <div class="modal-body">
+                        @method('PUT')
                         @csrf
                         <div class="row">
                             <div class="col-sm-4">
-                                <h4><label id="field_name" class="pull-right"></label></h4>
-                                <input type="hidden" value="" name="field_name">
+                                <h4><label id="fld_name" class="pull-right"></label></h4>
+                                <input type="hidden" value="" name="fld_name" id="field">
                             </div>
                             <div class="col-sm-8">
-                                <input type="text" value="" id="field_value">
+                                <input class="form-group" type="text" value="" id="fld_value" name="fld_value">
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
 @endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        function setField(field_name){
+            $('#fld_name').html(field_name.charAt(0).toUpperCase()+field_name.substr(1).toLowerCase());
+            var field_value= $('#'+field_name).html();
+
+            $('#fld_value').val(field_value);
+            $('#field').val(field_name);
+        }
+
+        function hideUploadButton(){
+            $('.image-upload').hide();
+        }
+
+        function showUploadButton(){
+            $('.image-upload').show();
+        }
+    </script>
+@endpush
+

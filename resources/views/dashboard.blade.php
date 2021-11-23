@@ -60,7 +60,7 @@
                         {{$post['status']}}
                     </div>
                     <div class="col-sm-12">
-                        <img src="{{asset($post['photo'])}}" height="200" width="300">
+                        <img src="{{asset($post['photo'] )}}" height="200" width="300">
                     </div>
                 </div>
                 <div class="row post-action">
@@ -77,3 +77,33 @@
         @endforeach
     </div>
 @endsection
+@push('scripts')
+<script type="text/javascript">
+    function like(id){
+        var elem = document.getElementById("post_like_count_"+id);
+        var count = parseInt(elem.innerHTML);
+        elem.innerHTML = count+1;
+        highlight(elem);
+    }
+    function share(id){
+        var elem = document.getElementById("post_share_count_"+id);
+        var count = parseInt(elem.innerHTML);
+        elem.innerHTML = count+1;
+        highlight(elem);
+    }
+    function comment(id){
+        var elem = document.getElementById("post_comment_count_"+id);
+        var count = parseInt(elem.innerHTML);
+        elem.innerHTML = count+1;
+        highlight(elem);
+    }
+    function highlight(elem){
+        elem.style.color = "red";
+        elem.parentElement.parentElement.style.transform="scale(1.5)";
+        setTimeout(function(){
+            elem.style.color="";
+            elem.parentElement.parentElement.style.transform="scale(1)";
+        },300);
+    }
+</script>
+@endpush

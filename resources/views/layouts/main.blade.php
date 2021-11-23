@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css"/>
+    <link rel="stylesheet" href="assets/css/style1.css"/>
+
     <link rel="stylesheet" href="assets/css/admin.css"/>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -29,35 +31,9 @@
         </div>
     </div>
     @include('layouts.footer')
+    @stack('scripts')
 
 
-<script>
-    function like(id){
-        var elem = document.getElementById("post_like_count_"+id);
-        var count = parseInt(elem.innerHTML);
-        elem.innerHTML = count+1;
-        highlight(elem);
-    }
-    function share(id){
-        var elem = document.getElementById("post_share_count_"+id);
-        var count = parseInt(elem.innerHTML);
-        elem.innerHTML = count+1;
-        highlight(elem);
-    }
-    function comment(id){
-        var elem = document.getElementById("post_comment_count_"+id);
-        var count = parseInt(elem.innerHTML);
-        elem.innerHTML = count+1;
-        highlight(elem);
-    }
-    function highlight(elem){
-        elem.style.color = "red";
-        elem.parentElement.parentElement.style.transform="scale(1.5)";
-        setTimeout(function(){
-            elem.style.color="";
-            elem.parentElement.parentElement.style.transform="scale(1)";
-        },300);
-    }
-</script>
+
 </body>
 </html>

@@ -51,5 +51,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/dashboard','DashobardController@index')->name('dashboard');
     Route::resource('/posts', PostController::class);
     Route::resource('/profile', ProfileController::class);
+    Route::post('/profile/edit', 'ProfileController@edit')->name('profile.edit');
+
 
 });
