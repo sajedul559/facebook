@@ -6,7 +6,7 @@
             @csrf
             <div class="text-center" onmouseover="showUploadButton();" onmouseout="hideUploadButton();">
                 <div class="form-group button-image">
-                    <img class="img-circle" src="{{asset(auth()->user()->image?? 'images/no_user.png')}}">
+                    <img class="img-circle" src="{{asset(auth()->user()->image?? '/images/no_user.jpg')}}">
                     <label onmouseover="showUploadButton();" class="btn btn-success image-upload" >
                         <input name="image" type="file" style="display: none;"/> Upload
                     </label>
