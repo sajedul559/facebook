@@ -148,9 +148,6 @@
             }
 
         });
-
-
-
     }
     function share(id){
         var elem = document.getElementById("post_share_count_"+id);
@@ -161,7 +158,6 @@
 
     function comment(post_id){
         var elem = $('#post_comment_'+post_id);
-
         if(elem.is(":visible")){
             elem.hide();
         } else{
