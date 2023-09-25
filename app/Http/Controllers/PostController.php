@@ -37,6 +37,7 @@ class PostController extends Controller
            'status'=> 'string|max:250',
            'image'=> 'mimes:jpg,jpeg,png,svg,gif|max:3000',
         ]);
+        
 
         if($request->hasFile('image')){
             $file= $request->file('image');
@@ -50,7 +51,6 @@ class PostController extends Controller
            'shares'=> json_encode(array()),
            'user_id'=> Auth::user()->id,
         ]);
-        dd($post);
 
         return back();
     }
