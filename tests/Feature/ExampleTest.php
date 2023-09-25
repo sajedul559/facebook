@@ -15,6 +15,7 @@ class ExampleTest extends TestCase
     public function test_example()
     {
         $response = $this->get('/');
+        $response->assertSee('FaceClone test');
 
         $response->assertStatus(200);
     }

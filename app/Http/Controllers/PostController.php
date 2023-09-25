@@ -43,13 +43,14 @@ class PostController extends Controller
             $imageFinal= processImage($file);
         }
 
-        Post::insert([
+       $post =  Post::insert([
            'status'=> $request->get('status') ?? '',
            'photo'=> $request->hasFile('image') ? $imageFinal : '',
            'likes'=> json_encode(array()),
            'shares'=> json_encode(array()),
            'user_id'=> Auth::user()->id,
         ]);
+        dd($post);
 
         return back();
     }

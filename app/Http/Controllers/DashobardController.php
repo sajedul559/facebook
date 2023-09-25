@@ -12,9 +12,6 @@ class DashobardController extends Controller
     {
 
         $allPosts = Post::query()->get();
-
-
-
         $posts = array();
         foreach ($allPosts as $post) {
             $posts[] = array(
