@@ -11,7 +11,7 @@ class DashobardController extends Controller
     public function index()
     {
 
-        $allPosts = Post::query()->get();
+        $allPosts = Post::query()->orderby('id','desc')->get();
         $posts = array();
         foreach ($allPosts as $post) {
             $posts[] = array(
