@@ -20,7 +20,7 @@ class UpdateUsersTable extends Migration
                $table->string('lname');
                $table->boolean('sex');
                $table->date('b_day')->default('2021-01-01');
-               $table->string('image');
+               $table->string('image')->nullable();
             });
         });
     }
