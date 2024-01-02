@@ -41,8 +41,7 @@ Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');
 
 // Email Verification Routes...
 Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
-Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify'); // v6.x
-/* Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify'); // v5.x */
+Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 
@@ -54,7 +53,4 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('/profile/edit', 'ProfileController@edit')->name('profile.edit');
     Route::post('update-likes', 'PostController@updateLikes')->name('updateLikes');
     Route::post('save-comment', 'PostController@saveComment')->name('saveComment');
-
-
-
 });
