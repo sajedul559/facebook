@@ -20,7 +20,6 @@
             }
         </style>
 
-</script>
     </head>
     <body>
         <div class="header">
@@ -33,9 +32,10 @@
                     </div>
                     <div class="col-sm-8 pull-right">
                         <div class="inline-form pull-right">
-                            <form action="javascript:void(0)" method="POST" onsubmit="window.location.href='login.html';return false;">
-                                <input type="text" name="user_email" placeholder="Email Address"/>
-                                <input type="password" name="user_email" placeholder="Password"/>
+                            <form method="POST" action="{{ route('login') }}">
+                                    @csrf
+                                <input type="text" name="email" placeholder="Email Address"/>
+                                <input type="password" name="password" placeholder="Password"/>
                                 <input type="submit" value="Login" class="btn btn-success"/>
                             </form>
                         </div>
